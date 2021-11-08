@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 import seaborn as sns
 
 
-df = pd.read_csv('dadospaulalimpos.csv')
+df = pd.read_csv('dadospaula_totais.csv')
 st.title('Entrance Skin Dose Evaluation in Pediatric Patients')
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
@@ -33,12 +33,8 @@ selectbox4 = 'Todas as Idades'
 selectbox5 = 'Todos os Pesos'
 
 selectbox1 = st.sidebar.selectbox(
-     'Projeção',
-     ('PELVE AP', 'PELVE RÃ', 'TORAX AP', 'TORAX PERFIL', 'CRANIO AP',
-       'CRANIO PERFIL', 'CRANIO TOWNE', 'SEIOS AP CALDWELL',
-       'SEIOS PERFIL', 'SEIOS AP WATERS')
-#    "Tipo de Exame",
-#    ('torax','pelve','cranio','seios')
+    "Tipo de Exame",
+    ('torax','pelve','cranio','seios','abdome')
 )
 
 selectbox2 = st.sidebar.selectbox(
@@ -63,7 +59,7 @@ selectbox5 = st.sidebar.selectbox(
 
 
     
-dfselecionado = df.loc[(df['projecao']==selectbox1) & (df['equipamento']==selectbox2)]
+dfselecionado = df.loc[(df['tipo']==selectbox1) & (df['equipamento']==selectbox2)]
 
 if (selectbox4 == 'Todas as Idades'):
     dfselecionado = dfselecionado
