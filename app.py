@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 import seaborn as sns
 
 
-df = pd.read_csv('dadospaula_totais.csv')
+df = pd.read_csv('dadospaula_juntos.csv')
 st.title('Entrance Skin Dose Evaluation in Pediatric Patients')
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
@@ -59,48 +59,48 @@ selectbox5 = st.sidebar.selectbox(
 
 
     
-dfselecionado = df.loc[(df['tipo']==selectbox1) & (df['equipamento']==selectbox2)]
+dfselecionado = df.loc[(df['TIPO']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
 
 if (selectbox4 == 'Todas as Idades'):
     dfselecionado = dfselecionado
 
 if (selectbox4 == 'Menores que 1'):
-    dfselecionado = dfselecionado[dfselecionado['idade']<1]   
+    dfselecionado = dfselecionado[dfselecionado['IDADE (ANOS)']<1]
 
 if (selectbox4 == 'Entre 1 e 5'):
-    dfselecionado = dfselecionado[(dfselecionado['idade']>1)&(dfselecionado['idade']<=5)]
+    dfselecionado = dfselecionado[(dfselecionado['IDADE (ANOS)']>1)&(dfselecionado['IDADE (ANOS)']<=5)]
 
 if (selectbox4 == 'Entre 5 e 10'):
-    dfselecionado = dfselecionado[(dfselecionado['idade']>5)&(dfselecionado['idade']<=10)]
+    dfselecionado = dfselecionado[(dfselecionado['IDADE (ANOS)']>5)&(dfselecionado['IDADE (ANOS)']<=10)]
 
 if (selectbox4 == 'Maiores que 10'):
-    dfselecionado = dfselecionado[(dfselecionado['idade']>10)]
+    dfselecionado = dfselecionado[(dfselecionado['IDADE (ANOS)']>10)]
 
 
 if (selectbox5 == 'Todos os Pesos'):
     dfselecionado = dfselecionado
 
 if (selectbox5 == 'Menores que 5kg'):
-    dfselecionado = dfselecionado[dfselecionado['peso']<1]   
+    dfselecionado = dfselecionado[dfselecionado['PESO (kg)']<1]
 
 if (selectbox5 == 'Entre 5kg e 15kg'):
-    dfselecionado = dfselecionado[(dfselecionado['peso']>5)&(dfselecionado['peso']<=15)]
+    dfselecionado = dfselecionado[(dfselecionado['PESO (kg)']>5)&(dfselecionado['PESO (kg)']<=15)]
 
 if (selectbox5 == 'Entre 15kg e 30kg'):
-    dfselecionado = dfselecionado[(dfselecionado['peso']>15)&(dfselecionado['peso']<=30)]
+    dfselecionado = dfselecionado[(dfselecionado['PESO (kg)']>15)&(dfselecionado['PESO (kg)']<=30)]
 
 if (selectbox5 == 'Maiores que 30kg'):
-    dfselecionado = dfselecionado[(dfselecionado['peso']>30)]
+    dfselecionado = dfselecionado[(dfselecionado['PESO (kg)']>30)]
 
 st.write('Mostrando o gráfico para:',selectbox1)
 st.write('Equipamento:',selectbox2)
 
 if (selectbox3 == 'Regressão Linear'):
     
-    dfregressao = dfselecionado[['dap','dose']]
+    dfregressao = dfselecionado[['DAP','DOSE (mGy)']]
     dfregressao.dropna(inplace=True)
-    x = dfregressao['dap'].values.reshape(-1,1)
-    y = dfregressao['dose'].values.reshape(-1,1)
+    x = dfregressao['DAP'].values.reshape(-1,1)
+    y = dfregressao['DOSE (mGy)'].values.reshape(-1,1)
     X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.7)
     model = LinearRegression()
     model.fit(X_train, y_train)
@@ -116,9 +116,9 @@ if (selectbox3 == 'Regressão Linear'):
     st.pyplot(fig)
 
 if (selectbox3 == 'Matriz de Correlação'):
-    if (selectbox1 == 'cranio'):
-        dfselecionado.drop('espessura',axis=1, inplace=True)
-        dfselecionado.drop('dfp',axis=1, inplace=True)
+#    if (selectbox1 == 'cranio'):
+#        dfselecionado.drop('espessura',axis=1, inplace=True)
+#        dfselecionado.drop('dfp',axis=1, inplace=True)
     
     dfcorr = dfselecionado.corr()
     # Generate a mask for the upper triangle
@@ -136,12 +136,12 @@ if (selectbox3 == 'Matriz de Correlação'):
 if (selectbox3 == 'Scatter Plot'):
     sns.set_context("talk", font_scale=1.1)
     fig, ax = plt.subplots(figsize=(12,4))
-    sns.scatterplot(x="dap", 
-    y="dose",
-    size="peso",
+    sns.scatterplot(x="DAP",
+    y="DOSE (mGy)",
+    size="PESO (kg)",
     sizes=(20,800),
     alpha=0.5,
-    hue="genero",
+    hue="GÊNERO",
     data=dfselecionado)
     # Put the legend out of the figure
     ax.legend(bbox_to_anchor=(1.0, 1),borderaxespad=0)
