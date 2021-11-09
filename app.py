@@ -59,7 +59,7 @@ selectbox5 = st.sidebar.selectbox(
 
 
     
-dfselecionado = df.loc[(df['TIPO']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
+dfselecionado = df.loc[(df['TIPO']==selectbox1) & (df['EQUIPAMENTO']==selectbox2)]
 
 if (selectbox4 == 'Todas as Idades'):
     dfselecionado = dfselecionado
