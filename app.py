@@ -125,7 +125,7 @@ if (selectbox3 == 'Matriz de Correlação'):
     sns.set_context("talk", font_scale=.7)
     mask = np.triu(np.ones_like(dfcorr, dtype=bool))
     # Set up the matplotlib figure
-    f, ax = plt.subplots(figsize=(8, 8))
+    f, ax = plt.subplots(figsize=(10, 10))
     # Generate a custom diverging colormap
     cmap = sns.diverging_palette(230, 20, as_cmap=True)
     # Draw the heatmap with the mask and correct aspect ratio
