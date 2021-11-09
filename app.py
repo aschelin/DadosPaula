@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 import seaborn as sns
 
 
-df = pd.read_csv('dadospaula_juntos.csv')
+df = pd.read_csv('dadospaula_new.csv')
 st.title('Entrance Skin Dose Evaluation in Pediatric Patients')
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
