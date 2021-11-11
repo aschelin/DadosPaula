@@ -114,7 +114,7 @@ if (selectbox3 == 'Regressão Linear'):
     dfregressao.dropna(inplace=True)
     x = dfregressao['DAP'].values.reshape(-1,1)
     y = dfregressao['DOSE (mGy)'].values.reshape(-1,1)
-    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.7)
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.9)
     model = LinearRegression()
     model.fit(X_train, y_train)
     y_new = model.predict(X_test)
