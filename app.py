@@ -36,9 +36,18 @@ selectbox5 = 'Todos os Pesos'
 
 selectbox1 = st.sidebar.selectbox(
     "Tipo de Exame",
-    ('PELVE AP', 'PELVE RÃ', 'TORAX AP', 'TORAX PERFIL', 'CRANIO AP',
-     'CRANIO PERFIL', 'CRANIO TOWNE', 'SEIOS AP CALDWELL',
-     'SEIOS PERFIL', 'SEIOS AP WATERS')
+    ('SEIOS AP CALDWELL',
+     'SEIOS PERFIL',
+     'SEIOS AP WATERS',
+     'CRANIO AP',
+     'CRANIO PERFIL',
+     'CRANIO TOWNE',
+     'PELVE AP',
+     'PELVE RÃ',
+     'ABDOME AP',
+     'ABDOME AP EM PÉ',
+     'TORAX AP',
+     'TORAX PERFIL')
 )
 
 selectbox2 = st.sidebar.selectbox(
@@ -63,7 +72,7 @@ selectbox5 = st.sidebar.selectbox(
 
 #write('selec')
     
-dfselecionado = df.loc[(df['PROJEÇÕES']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
+dfselecionado = df.loc[(df['PROJEÇÃO']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
 
 if (selectbox4 == 'Todas as Idades'):
     dfselecionado = dfselecionado
