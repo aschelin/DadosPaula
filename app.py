@@ -19,6 +19,8 @@ st.title('Entrance Skin Dose Evaluation in Pediatric Patients')
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
+projecoes = df.PROJEÇÃO.unique()
+
 # SIDEBAR
 # Parâmetros e número de ocorrências
 tabela = st.sidebar.empty()    # placeholder que só vai ser carregado com o df_filtered
@@ -34,7 +36,7 @@ selectbox5 = 'Todos os Pesos'
 
 selectbox1 = st.sidebar.selectbox(
     "Tipo de Exame",
-    ('torax','pelve','cranio','seios','abdome')
+    tuple(projecoes)
 )
 
 selectbox2 = st.sidebar.selectbox(
@@ -59,7 +61,7 @@ selectbox5 = st.sidebar.selectbox(
 
 
     
-dfselecionado = df.loc[(df['TIPO']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
+dfselecionado = df.loc[(df['PROJEÇÕES']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
 
 if (selectbox4 == 'Todas as Idades'):
     dfselecionado = dfselecionado
