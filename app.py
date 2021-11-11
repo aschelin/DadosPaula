@@ -36,7 +36,9 @@ selectbox5 = 'Todos os Pesos'
 
 selectbox1 = st.sidebar.selectbox(
     "Tipo de Exame",
-    tuple(projecoes)
+    ('PELVE AP', 'PELVE RÃ', 'TORAX AP', 'TORAX PERFIL', 'CRANIO AP',
+     'CRANIO PERFIL', 'CRANIO TOWNE', 'SEIOS AP CALDWELL',
+     'SEIOS PERFIL', 'SEIOS AP WATERS')
 )
 
 selectbox2 = st.sidebar.selectbox(
@@ -59,7 +61,7 @@ selectbox5 = st.sidebar.selectbox(
     ('Todos os Pesos','Menores que 5kg','Entre 5kg e 15kg','Entre 15kg e 30kg','Maiores que 30kg')
 )
 
-
+#write('selec')
     
 dfselecionado = df.loc[(df['PROJEÇÕES']==selectbox1) & (df['EQUIPAMENTO ']==selectbox2)]
 
